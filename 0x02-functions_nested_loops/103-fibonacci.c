@@ -8,7 +8,7 @@ int main(void)
 {
 	long int n_1 = 0, n_2 = 1, new, c, sum = 0;
 
-	for (c = 0; c <= 25; c++)
+	for (c = 0; c <= 49; c++)
 	{
 		new = n_1 + n_2;
 		n_1 = n_2;
