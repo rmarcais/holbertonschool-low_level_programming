@@ -2,7 +2,7 @@
 #include <string.h>
 /**
  * rot13 - encode a string using rot13
- *@s: points to a variable char
+ *@str: points to a variable char
  * Return: Always 0.
  */
 char *rot13(char *str)
