@@ -7,44 +7,21 @@
  */
 char *cap_string(char *str)
 {
-	int i;
-	int len = strlen(str);
+	int i, id, len = strlen(str);
+	char ch[] = " \n\t,;.!?\"(){}";
 
 	for (i = 0; i < len; i++)
 	{
-		if (str[i] != '!' && str[i] != '-')
+		for (id = 0; id < 13; id++)
 		{
-			if (str[i] >= 0 && str[i] <= 64)
+			if (str[i] == ch[id])
 			{
-				i++;
-				if (str[i] >= 97 && str[i] <= 122)
+				if (str[i + 1] >= 97 && str[i + 1] <= 122)
 				{
-					str[i] = str[i] - 32;
+					str[i + 1] = str[i + 1] - 32;
 				}
-			}
-			if (str[i] >= 91 && str[i] <= 96)
-			{
-				i++;
-				if (str[i] >= 97 && str[i] <= 122)
-				{
-					str[i] = str[i] - 32;
-				}
-			}
-			if (str[i] >= 123 && str[i] < 127)
-			{
-				i++;
-				if (str[i] >= 97 && str[i] <= 122)
-				{
-					str[i] = str[i] - 32;
-				}
-			}
-			if (str[i] == '\n')
-			{
-				i++;
-				str[i] = str[i] - 32;
 			}
 		}
-
 	}
 	return (str);
 }
