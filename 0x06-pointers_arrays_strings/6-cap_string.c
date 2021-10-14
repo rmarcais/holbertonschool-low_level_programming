@@ -12,7 +12,7 @@ char *cap_string(char *str)
 
 	for (i = 0; i < len; i++)
 	{
-		for (id = 0; id < 14; id++)
+		for (id = 0; id < 13; id++)
 		{
 			if (str[i] == ch[id])
 			{
@@ -21,6 +21,10 @@ char *cap_string(char *str)
 					str[i + 1] = str[i + 1] - 32;
 					break;
 				}
+			}
+			if (str[0] >= 97 && str[0] <= 122)
+			{
+				str[0] = str[0] - 32;
 			}
 		}
 	}
