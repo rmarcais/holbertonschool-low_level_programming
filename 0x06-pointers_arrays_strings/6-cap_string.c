@@ -12,7 +12,7 @@ char *cap_string(char *str)
 
 	for (i = 0; i < len; i++)
 	{
-		for (id = 0; id < 13; id++)
+		for (id = 0; id < 14; id++)
 		{
 			if (str[i] == ch[id])
 			{
