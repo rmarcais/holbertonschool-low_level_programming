@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * main - check the code
- *
- * Return: Always 0.
+ * _puts_recursion - prints a string
+ *@s: points to a char
+ * Return: nothing.
  */
 void _puts_recursion(char *s)
 {
