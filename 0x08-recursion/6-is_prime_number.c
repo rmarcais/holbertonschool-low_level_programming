@@ -13,11 +13,15 @@ int _getsqrt(int n, int sqr);
 
 int is_prime_number(int n)
 {
+	if (n == 1)
+	{
+		return (0);
+	}
 	if (n == 2)
 	{
 		return (1);
 	}
-	if (_isprime(n, 1) == 1)
+	if (_isprime(n, 2) == 1)
 		return (1);
 	else
 		return (0);
