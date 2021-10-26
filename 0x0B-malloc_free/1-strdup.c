@@ -9,18 +9,27 @@
 int _strlen(char *str);
 char *_strdup(char *str)
 {
-	int len = _strlen(str);
-	char *na = malloc(sizeof(char) * (len + 1));
-	int id = 0;
 
 	if (str == NULL)
-		return (NULL);
-	while (str[id])
 	{
+		return (NULL);
+	}
+	else if (str[0] == '\0')
+	{
+		return ('\0');
+	}
+	else
+	{
+		int len = _strlen(str);
+		char *na = malloc(sizeof(char) * (len + 1));
+		int id = 0;
+		while (str[id])
+		{
 		na[id] = str[id];
 		id++;
+		}
+		return (na);
 	}
-	return (na);
 }
 /**
  * _strlen - computes the size of str
