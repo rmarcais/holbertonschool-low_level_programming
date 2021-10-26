@@ -49,7 +49,7 @@ char *str_concat(char *s1, char *s2)
  */
 int _strlen(char *str)
 {
-	int i = 0, count;
+	int i = 0, count = 0;
 
 	while (str[i])
 	{
