@@ -10,11 +10,11 @@ int _strlen(char *str);
 char *_strdup(char *str)
 {
 	int len = _strlen(str);
-	char *na = malloc(sizeof(char) * len);
+	char *na = malloc(sizeof(char) * (len + 1));
 	int id = 0;
 
-	if (str[len - 1] == '\0')
-		return ('\0');
+	if (str == NULL)
+		return (NULL);
 	while (str[id])
 	{
 		na[id] = str[id];
