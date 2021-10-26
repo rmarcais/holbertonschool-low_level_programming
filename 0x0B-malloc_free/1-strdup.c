@@ -30,7 +30,8 @@ char *_strdup(char *str)
 int _strlen(char *str)
 {
 	int i = 0, count;
-	while(str[i])
+
+	while (str[i])
 	{
 		count++;
 		i++;
