@@ -1,52 +1,46 @@
 #include "main.h"
 #include <stdlib.h>
+int _strlen(char *str);
 /**
  * str_concat - concatenates two strings
- * @s1: points to a char
+ *@s1: points to a char
  *@s2: points to a char
- *@str: points to a char
  * Return: ar or NULL.
  */
-int _strlen(char *str);
+
 char *str_concat(char *s1, char *s2)
 {
 	int i = 0, j = 0;
-	int len1 = _strlen(s1);
-	int len2 = _strlen(s2);
-	char *ar = malloc((len1 * sizeof(char)) + (len2 * sizeof(char)));
+	int len1, len2;
+	char *ar;
+	int p;
 
-	if (ar == 0)
-		return (NULL);
 	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+	ar = malloc((len1 + len2 + 1) * sizeof(char));
+
+	if (ar == NULL)
+		return (NULL);
+
+	while (i < len1)
 	{
-		s1 = '\0';
-		ar[0] = '\0';
+		*(ar + i) = *(s1 + i);
+		i++;
 	}
-	else
+	p = len1;
+	while (p < (len1 + len2))
 	{
-		while (s1[i])
-		{
-			if (s1 == NULL)
-				ar[0] = '\0';
-			else
-			{
-				ar[i] = s1[i];
-				i++;
-			}
-		}
+		*(ar + p) = *(s2 + j);
+		p++;
+		j++;
 	}
-	while (s2[j] != '\0')
-	{
-		if (s2 == NULL)
-			ar[i] = '\0';
-		else
-		{
-			ar[i] = s2[j];
-			j++;
-			i++;
-		}
-	}
-	return (ar + '\0');
+	*(ar + (len1 + len2)) = '\0';
+	return (ar);
 }
 /**
  * _strlen - computes the size of str
