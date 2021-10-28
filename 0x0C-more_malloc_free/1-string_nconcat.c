@@ -6,6 +6,7 @@ int _strlen(char *str);
  * string_nconcat - concatenates two strings
  * @s1: point to a char
  *@s2: points to a char
+ *@n: concatenates n bytes of s2 to s1
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
@@ -24,7 +25,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (n >= len2)
 		n = len2;
 	len1 = _strlen(s1);
-	ar = malloc((len1 + n +1) * sizeof(char));
+	ar = malloc((len1 + n + 1) * sizeof(char));
 
 	if (ar == 0)
 		return (NULL);
