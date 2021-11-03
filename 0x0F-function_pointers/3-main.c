@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
 	int (*fp)(int, int);
-	int a, b, c;
+	int a, b;
 
 	if (argc != 4)
 	{
@@ -18,8 +18,7 @@ int main(int argc, char *argv[])
 	a = atoi(argv[1]);
 	b = atoi(argv[3]);
 	fp = get_op_func(argv[2]);
-	c = fp(a, b);
-	printf("%d\n", c);
+	printf("%d\n", fp(a, b));
 	return (0);
 }
 
