@@ -1,10 +1,19 @@
 #include "3-calc.h"
-#include <ctype.h>
 int main(int argc, char *argv[])
 {
-	int a;
+	int (*fp)(int, int);
+	int a, b, c;
 
-	if (argc == 4)
+	if (argc != 4)
 	{
-		get_op_func(argv[2]);
+		printf("Error\n");
+		exit(98);
 	}
+	a = atoi(argv[1]);
+	b = atoi(argv[3]);
+	fp = get_op_func(argv[2]);
+	c= fp(a, b);
+	printf("%d\n", c);
+	return (0);
+}
+

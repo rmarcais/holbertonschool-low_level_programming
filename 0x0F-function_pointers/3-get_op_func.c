@@ -5,7 +5,7 @@
  *
  * Return: returns a pointer to the functions that cooresponds to the good op.
  */
-int (*get_op_fun(char *s))(int, int)
+int (*get_op_func(char *s))(int, int)
 {
 	op_t ops[] = {
         {"+", op_add},
@@ -21,8 +21,9 @@ int (*get_op_fun(char *s))(int, int)
 	{
 		if (s == ops[i].op)
 		{
-			return (ops[i].f(int, int));
+			return (ops[i].f);
 		}
+		i++;
 	}
 	return (NULL);
 }
