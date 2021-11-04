@@ -15,7 +15,7 @@ void print_all(const char * const format, ...);
 typedef struct type
 {
 	char *type;
-	void (*f)(va_list ap);
+	void (*f)(char *separator, va_list ap);
 } type_t;
 void print_char(char *separator, va_list ap);
 void print_int(char *separator, va_list ap);
