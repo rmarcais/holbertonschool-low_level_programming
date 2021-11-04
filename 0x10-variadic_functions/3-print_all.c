@@ -71,9 +71,9 @@ void print_str(char *separator, va_list ap)
 	if (string == 0)
 	{
 		printf("%s(nil)", separator);
+		return;
 	}
-	else
-		printf("%s%s", separator, string);
+       	printf("%s%s", separator, string);
 }
 /**
  * print_float - prints a float
