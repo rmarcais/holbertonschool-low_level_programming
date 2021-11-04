@@ -20,7 +20,7 @@ void print_all(const char * const format, ...)
 
 	va_start(ap, format);
 
-	while (format[i])
+	while (format[i] && format != 0)
 	{
 		j = 0;
 		while (remi[j].type)
