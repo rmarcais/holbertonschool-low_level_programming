@@ -9,7 +9,7 @@ void print_all(const char * const format, ...)
 {
 	va_list ap;
 	int i = 0, j = 0;
-	type_t remi[] = {
+	type_t array[] = {
 		{"c", print_char},
 		{"i", print_int},
 		{"s", print_str},
@@ -23,11 +23,11 @@ void print_all(const char * const format, ...)
 	while (format != 0 && format[i])
 	{
 		j = 0;
-		while (j < 4)
+		while (array[j].type)
 		{
-			if (format[i] == *remi[j].type)
+			if (format[i] == *array[j].type)
 			{
-				remi[j].f(separator, ap);
+				array[j].f(separator, ap);
 				separator = ", ";
 			}
 			j++;
