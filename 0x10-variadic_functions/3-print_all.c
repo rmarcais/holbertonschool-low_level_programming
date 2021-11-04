@@ -73,7 +73,7 @@ void print_str(char *separator, va_list ap)
 		printf("%s(nil)", separator);
 		return;
 	}
-       	printf("%s%s", separator, string);
+	printf("%s%s", separator, string);
 }
 /**
  * print_float - prints a float
