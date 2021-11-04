@@ -20,10 +20,10 @@ void print_all(const char * const format, ...)
 
 	va_start(ap, format);
 
-	while (format[i] && format != 0)
+	while (format != 0 && format[i])
 	{
 		j = 0;
-		while (remi[j].type)
+		while (j < 4)
 		{
 			if (format[i] == *remi[j].type)
 			{
