@@ -18,6 +18,13 @@ int main(int argc, char *argv[])
 	buf = create_a_buffer(argv[2]);
 	fd1 = open(argv[1], O_RDONLY);
 	r = read(fd1, buf, 1024);
+	if (fd1 == -1 || r == -1)
+	{
+		dprintf(STDERR_FILENO,
+			"Error: Can't read from file %s\n", argv[1]);
+		free(buf);
+		exit(98);
+	}
 	fd2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	while (r > 0)
 	{
@@ -62,7 +69,7 @@ char *create_a_buffer(char *filename)
 	return (buf);
 }
 /**
- * _close - closes a file
+ * _close - closes a file descriptor
  * @fd: The file descriptor
  *
  * Return: Nothing.
