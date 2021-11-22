@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
 	}
 	buf = create_a_buffer(argv[2]);
 	fd1 = open(argv[1], O_RDONLY);
-	fd2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	r = read(fd1, buf, 1024);
+	fd2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	while (r > 0)
 	{
 		if (fd1 == -1 || r == -1)
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 		w = write(fd2, buf, r);
-		if (fd2 == -1 || w == -1 || w != r)
+		if (fd2 == -1 || w == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n",
 				argv[2]);
