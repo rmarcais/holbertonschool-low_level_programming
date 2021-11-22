@@ -15,9 +15,9 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
+	buf = create_a_buffer(argv[2]);
 	fd1 = open(argv[1], O_RDONLY);
 	fd2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	buf = create_a_buffer(argv[2]);
 	r = read(fd1, buf, 1024);
 	while (r > 0)
 	{
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
  */
 char *create_a_buffer(char *filename)
 {
-	char *buf = malloc(1024);
+	char *buf = malloc(sizeof(char) * 1024);
 
 	if (buf == NULL)
 	{
