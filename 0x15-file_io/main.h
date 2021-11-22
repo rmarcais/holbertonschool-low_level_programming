@@ -5,6 +5,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
+char *create_a_buffer(char *filename);
+void _close(int fd);
 int _putchar(char c);
 int _strlen(char *str);
 ssize_t read_textfile(const char *filename, size_t letters);
