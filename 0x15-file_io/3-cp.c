@@ -7,72 +7,60 @@
  */
 int main(int argc, char *argv[])
 {
-	int r, w, fd1, fd2;
-	char *buf;
-
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	buf = create_a_buffer(argv[2]);
-	fd1 = open(argv[1], O_RDONLY);
-	r = read(fd1, buf, 1024);
-	fd2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	do {
-		if (fd1 == -1 || r == -1)
-		{
-			dprintf(STDERR_FILENO,
-				"Error: Can't read from file %s\n", argv[1]);
-			free(buf);
-			exit(98);
-		}
-		w = write(fd2, buf, r);
-		if (fd2 == -1 || w == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n",
-				argv[2]);
-			free(buf);
-			exit(99);
-		}
-		r = read(fd1, buf, 1024);
-		fd2 = open(argv[2], O_WRONLY | O_APPEND);
-	} while (r > 0);
-	free(buf);
-	_close(fd1);
-	_close(fd2);
+	_copyfile(argv[1], argv[2]);
 	return (0);
 }
 /**
- * create_a_buffer - creates a buffer
- * @filename: name of the file
- *
- * Return: exit (99) or the buffer.
+ * _copyfile - copies the content of a file to anothor file
+ * @src: file from
+ * @dest: file to
+ * Return: Nothing.
  */
-char *create_a_buffer(char *filename)
+void _copyfile(char *src, char *dest)
 {
-	char *buf = malloc(sizeof(char) * 1024);
+	int r, fd1, fd2;
+	char buf[1024];
 
 	if (buf == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", dest);
 		exit(99);
 	}
-	return (buf);
-}
-/**
- * _close - closes a file descriptor
- * @fd: The file descriptor
- *
- * Return: Nothing.
- */
-void _close(int fd)
-{
-	int cl = close(fd);
-
-	if (cl == -1)
+	fd1 = open(src, O_RDONLY);
+	if (src == NULL || fd1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", src);
+		exit(98);
+	}
+	fd2 = open(dest, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	while ((r = read(fd1, buf, 1024)) > 0)
+	{
+		if (fd2 == -1 || write(fd2, buf, r) != r)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n",
+				dest);
+			exit(99);
+		}
+	}
+	if (r == -1)
+	{
+		dprintf(STDERR_FILENO,
+			"Error: Can't read from file %s\n", src);
+		exit(98);
+	}
+	if (close(fd1) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
+		exit(100);
+	}
+	if (close(fd2) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
 		exit(100);
 	}
 }
