@@ -22,6 +22,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		new->key = strdup(key);
 		new->value = strdup(value);
 		ht->array[index] = new;
+		return (1);
 	}
 	tmp = ht->array[index];
 	while (tmp)
