@@ -4,7 +4,7 @@
 
 def island_perimeter(grid):
     """Function that return the perimeter of the island described in 'grid'."""
-    if grid is None or 1 in grid[0] or 1 in grid[len(grid) - 1]:
+    if grid is None or grid == [[]]:
         return
     perimeter = 0
     for i in range(1, len(grid) - 1):
