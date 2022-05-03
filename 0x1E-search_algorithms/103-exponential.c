@@ -76,13 +76,14 @@ int exponential_search(int *array, size_t size, int value)
 	if (array == NULL || size == 0)
 		return (-1);
 
-	if (array[0] == value)
-		return (0);
-
-	while (i < size && array[i] <= value)
+	if (array[0] != value)
 	{
-		printf("Value checked array[%ld] = [%d]\n", i, array[i]);
-		i = i * 2;
+		while (i < size && array[i] <= value)
+		{
+			printf("Value checked array[%ld] = [%d]\n",
+			       i, array[i]);
+			i = i * 2;
+		}
 	}
 	return (binarySearch(array, i / 2, min(i, size - 1), value));
 }
