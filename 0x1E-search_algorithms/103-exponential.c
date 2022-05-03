@@ -6,9 +6,9 @@
  * @high: The end of the array
  * Return: Nothing
  */
-void print_array(int *array, int low, int high)
+void print_array(int *array, size_t low, size_t high)
 {
-	int i;
+	size_t i;
 
 	printf("Searching in array: ");
 	for (i = low; i <= high; i++)
@@ -40,11 +40,11 @@ int min(int a, int b)
  * @value: The value to retrieve
  * Return: The the first index where value is located or NULL
  */
-int binarySearch(int *array, int low, int high, int value)
+int binarySearch(int *array, size_t low, size_t high, int value)
 {
-	int mid = low + (high - low) / 2;
+	size_t mid = low + (high - low) / 2;
 
-	printf("Value found between indexes [%d] = [%d]\n", low, high);
+	printf("Value found between indexes [%ld] = [%ld]\n", low, high);
 
 	while (low <= high)
 	{
