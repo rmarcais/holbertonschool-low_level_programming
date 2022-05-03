@@ -42,7 +42,7 @@ int min(int a, int b)
  */
 int binarySearch(int *array, size_t low, size_t high, int value)
 {
-	size_t mid = low + (high - low) / 2;
+	size_t mid;
 
 	printf("Value found between indexes [%ld] = [%ld]\n", low, high);
 
