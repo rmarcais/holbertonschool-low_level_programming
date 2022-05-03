@@ -71,13 +71,14 @@ int binarySearch(int *array, size_t low, size_t high, int value)
  */
 int exponential_search(int *array, size_t size, int value)
 {
-	size_t i = 1;
+	size_t i;
 
 	if (array == NULL || size == 0)
 		return (-1);
 
 	if (array[0] != value)
 	{
+		i = 1;
 		while (i < size && array[i] <= value)
 		{
 			printf("Value checked array[%ld] = [%d]\n",
