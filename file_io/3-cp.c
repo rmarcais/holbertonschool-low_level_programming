@@ -49,7 +49,6 @@ int main(int ac, char *av[])
 	if (read_bytes == -1)
 	{
 		handle_close(fd_from);
-		handle_close(fd_to);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
