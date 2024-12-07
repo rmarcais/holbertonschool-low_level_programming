@@ -42,7 +42,6 @@ int main(int ac, char *av[])
 		if (write_bytes == -1 || write_bytes != read_bytes)
 		{
 			handle_close(fd_from);
-			handle_close(fd_to);
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 			exit(99);
 		}
