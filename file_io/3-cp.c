@@ -39,13 +39,13 @@ int main(int ac, char *av[])
 	if (fd_to == -1)
 	{
 		handle_close(fd_from);
-		dprintf(STDERR_FILENO, "Error: Can't write hehe to %s\n", av[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		exit(99);
 	}
 	while ((read_bytes = read(fd_from, buffer, sizeof(buffer))) > 0)
 	{
 		write_bytes = write(fd_to, buffer, read_bytes);
-		if (write_bytes == -1 || write_bytes != read_bytes)
+		if (fd_to == -1 || write_bytes != read_bytes)
 		{
 			handle_close(fd_from);
 			handle_close(fd_to);
